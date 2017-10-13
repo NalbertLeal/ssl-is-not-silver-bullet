@@ -1,0 +1,63 @@
+Certificate Request:
+    Data:
+        Version: 1 (0x0)
+        Subject: C=BR, ST=Rio Grande do Norte, L=Natal, O=UFRN, OU=-, CN=Nalbert Leal/emailAddress=nalbertrn@yahoo.com.br
+        Subject Public Key Info:
+            Public Key Algorithm: rsaEncryption
+                Public-Key: (2048 bit)
+                Modulus:
+                    00:cf:26:96:04:80:0a:66:17:ad:37:7c:be:bf:e2:
+                    44:5e:9d:45:28:00:88:d4:af:3d:13:7a:47:43:4c:
+                    7d:07:08:2b:b4:52:98:ae:6f:65:e1:cf:dc:1e:ac:
+                    aa:f7:95:2f:be:43:3c:50:35:94:0d:10:64:7a:bf:
+                    a6:e8:25:72:cb:24:57:29:45:5b:4f:16:a1:d3:99:
+                    03:3f:e6:fb:2c:0d:75:3e:19:c3:17:c6:cf:a3:a4:
+                    b9:ea:28:18:3b:39:65:c7:30:fa:69:90:09:aa:2b:
+                    2b:9d:cf:ff:95:2e:b8:3d:28:49:67:95:25:e1:33:
+                    e2:b5:14:c7:d8:4d:da:02:0a:a0:2b:3a:d3:a2:a3:
+                    26:34:dd:f4:d2:9d:85:e3:c3:8f:48:53:36:b4:58:
+                    d0:90:b2:12:21:42:32:4e:e2:5d:a2:d1:26:b5:e8:
+                    f5:c4:64:3b:98:30:e2:e3:e4:15:e6:a3:30:ee:5f:
+                    83:74:73:73:14:a8:7d:a4:34:75:a5:6e:b2:2f:b0:
+                    71:bb:12:bf:8a:bb:c8:0b:33:11:83:bb:db:f1:5e:
+                    99:fa:a3:14:c4:26:43:f6:81:0e:e0:ae:3b:f4:89:
+                    ac:00:3d:6e:fd:53:fb:f0:9e:24:4b:cf:ec:a0:4c:
+                    e1:a8:a0:93:6d:94:38:70:4a:a9:97:ed:27:86:fd:
+                    1c:f5
+                Exponent: 65537 (0x10001)
+        Attributes:
+            a0:00
+    Signature Algorithm: sha256WithRSAEncryption
+         09:23:c3:5b:be:70:70:fc:dc:62:81:c5:8b:84:79:f7:aa:d2:
+         20:f2:fd:7d:29:44:d6:17:9b:78:3f:c4:21:8a:32:65:b8:0a:
+         3f:bf:46:fc:07:bd:a2:18:5c:d0:d2:d2:3a:ab:5d:7c:db:51:
+         c3:75:5a:41:f8:28:7a:bb:d6:a4:8f:0a:54:e1:ee:a4:88:b5:
+         b4:42:89:0e:0c:25:07:a4:8f:b5:b1:65:f6:c2:59:f4:a8:11:
+         6c:48:4e:13:d6:bb:be:d1:d3:92:4d:ee:ff:4d:a8:39:6f:8b:
+         05:82:79:f8:f8:35:5c:5b:ab:b0:37:c3:24:48:f7:03:0a:50:
+         2b:7f:57:79:ef:e5:56:30:f7:4d:44:41:0f:e7:00:83:1e:2e:
+         40:69:cd:7e:7e:db:f7:8f:5c:fa:b3:d2:53:1c:59:d0:89:93:
+         ac:5b:3d:b3:b9:0a:e1:22:a2:9b:97:00:95:71:8e:fe:cb:fd:
+         4d:35:5d:85:46:df:34:a5:df:04:5a:1e:cb:ca:b8:6c:7f:2d:
+         06:50:0a:a5:a0:24:19:1f:29:22:8c:68:ce:dc:a1:6d:cd:1d:
+         4e:96:3d:f9:71:7a:e0:5e:3d:ad:4e:67:e3:14:5e:be:15:9a:
+         db:27:c1:33:48:3a:8d:bd:99:eb:4b:3d:8b:5c:93:7b:73:af:
+         ae:09:93:2d
+-----BEGIN CERTIFICATE REQUEST-----
+MIIC2jCCAcICAQAwgZQxCzAJBgNVBAYTAkJSMRwwGgYDVQQIDBNSaW8gR3JhbmRl
+IGRvIE5vcnRlMQ4wDAYDVQQHDAVOYXRhbDENMAsGA1UECgwEVUZSTjEKMAgGA1UE
+CwwBLTEVMBMGA1UEAwwMTmFsYmVydCBMZWFsMSUwIwYJKoZIhvcNAQkBFhZuYWxi
+ZXJ0cm5AeWFob28uY29tLmJyMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
+AQEAzyaWBIAKZhetN3y+v+JEXp1FKACI1K89E3pHQ0x9BwgrtFKYrm9l4c/cHqyq
+95UvvkM8UDWUDRBker+m6CVyyyRXKUVbTxah05kDP+b7LA11PhnDF8bPo6S56igY
+OzllxzD6aZAJqisrnc//lS64PShJZ5Ul4TPitRTH2E3aAgqgKzrToqMmNN300p2F
+48OPSFM2tFjQkLISIUIyTuJdotEmtej1xGQ7mDDi4+QV5qMw7l+DdHNzFKh9pDR1
+pW6yL7BxuxK/irvICzMRg7vb8V6Z+qMUxCZD9oEO4K479ImsAD1u/VP78J4kS8/s
+oEzhqKCTbZQ4cEqpl+0nhv0c9QIDAQABoAAwDQYJKoZIhvcNAQELBQADggEBAAkj
+w1u+cHD83GKBxYuEefeq0iDy/X0pRNYXm3g/xCGKMmW4Cj+/RvwHvaIYXNDS0jqr
+XXzbUcN1WkH4KHq71qSPClTh7qSItbRCiQ4MJQekj7WxZfbCWfSoEWxIThPWu77R
+05JN7v9NqDlviwWCefj4NVxbq7A3wyRI9wMKUCt/V3nv5VYw901EQQ/nAIMeLkBp
+zX5+2/ePXPqz0lMcWdCJk6xbPbO5CuEiopuXAJVxjv7L/U01XYVG3zSl3wRaHsvK
+uGx/LQZQCqWgJBkfKSKMaM7coW3NHU6WPflxeuBePa1OZ+MUXr4VmtsnwTNIOo29
+metLPYtck3tzr64Jky0=
+-----END CERTIFICATE REQUEST-----

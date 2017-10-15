@@ -28,7 +28,7 @@ if __name__ == '__main__':
         username = request.form.get("username")
         password = request.form.get("password")
         print(username)
-        if username == 'nalbertg' and password == '2444666668888888':
+        if username == 'brbrbr' and password == '123456':
             code = 301
             return redirect('https://localhost:4040/profile/' + username, code=code)
         else:

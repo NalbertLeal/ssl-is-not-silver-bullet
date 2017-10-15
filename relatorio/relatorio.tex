@@ -154,27 +154,142 @@
   leitor.
 
     \begin{enumerate}
-      \item Usar o sistema operacional Ubuntu:
-      \item Instalar as bibliotecas nescessárias com o comando:
-        \$ sudo apt-get install build-essential ruby-dev libcap-dev net-tools
-      \item Instalar a gema (software escrito na linguagem ruby) usando o
-      gerenciador de pacotes "gem": \$ sudo gem install bettercap
-      \item Possuir o programa "virtualbox" da oracle para rodar duas
-      maquinas virtuais, uma será o servidor e a outra o cliente. Os links
-      para baixar as maquinas estão abaixo (as maquinas virtuais
-      já possuem os softwares nescessários para rodar o experimento):
+      \item Possuir três computadores com o  sistema operacional Ubuntu.
+      abaixo está o papel desempenhado por cada computador:
       \begin{enumerate}
-        \item Servidor:
-        \item Cliente:
+        \item Servidor: Um dos computadores funciona como servidor do pequeno
+        sistema montado em flask/python (o sistema implementador faz uso de
+        SSL), com esse sistema podemos simular um sistema de sites em produção.
+        \item Cliente: Esse computador vai acessar o sistema e vai ser
+        interceptado pelo atacante.
+        \item Atacante: este compudator utiliza o software "bettercap" para
+        interceptar os dados do cliente.
+      \end{enumerate}
+      \item Na maquina atacante:
+      \begin{enumerate}
+        \item Instalar as bibliotecas nescessárias com o comando:
+          \$ sudo apt-get install build-essential ruby-dev libcap-dev net-tools
+        \item Instalar a gema (software escrito na linguagem ruby) bettercap
+          usando o gerenciador de pacotes "gem": \$ sudo gem install bettercap
+      \end{enumerate}
+      \item Na maquina servidor:
+      \begin{enumerate}
+        \item Instalar o gerenciador de versões git:
+        \item Instalar o software "virtualenv" para gerenciamento de ambientes
+        de desenvolvimento python, use o comando: \$ sudo pip install virtualenv
+        \item baixar o repositório do código do servidor que está no GitHub:
+        \$ git clone https://github.com/nalbertg/ssl-is-not-silver-bullet
       \end{enumerate}
     \end{enumerate}
 
+  \newpage
+
   \subsection{Passo-a-passo}
+  \paragraph{}
+  Inicialmente preciso lembrar q todos os requisitos da maquina servidor deve
+  estar sendo atindidas, caso não volte para a sub-sessão anterior.
+  Para montar a maquina servidor, siga os passos a seguir:
+  \begin{enumerate}
+    \item Entre na pasta do repositório baixado do GitHub:
+    \break
+    \$ cd ssl-is-not-silver-bullet
+    \item Inicie o ambiente de desnvolvimento para não afetar sua instalação
+    python:
+    \$ source bin/activate
+    \item Entre na pasta do servidor:
+    \break
+    \$ cd \texttt{ssl\char`_server/app}
+    \item Instale as bibliotecas nescessárias:
+    \break
+    \$ make req
+    \item Inicie o servidor com o comando:
+    \break
+    \$ python main.py
+    \item Se não funcionar gere o certificado e a chave nescessária para o SSL:
+    \break
+    \$ make \texttt{key\char`_crt}
+    \item Tente mais uma vez iniciar o servidor com o comando:
+    \break
+    \$ python main.py
+  \end{enumerate}
+
+  \paragraph{}
+  Agora precisamos iniciar o atacante:
+  \paragraph{}
+
+  Inicialmente preciso lembrar q todos os requisitos da maquina atacante deve
+  estar sendo atindidas, caso não volte para a sub-sessão anterior.
+  \begin{enumerate}
+    \item Inicie a máquina cliente
+    \item Use o comando a seguir na máquina cliente para descobrir o IP da
+    máquina cliente:
+    \break
+    \$ ip a
+    \item Pegue o IP da maquia cliente e volte para a máquina atacante
+    \item Habilite o IP forward na máquina atacante com o comando:
+    \break
+    \$ echo \texttt{\char`>} 1 \texttt{/proc/sys/net/ipv4/ip\char`_forward}
+    \item digite o comando abaixo para interceptar a comunicação entre o cliente
+    e servidor:
+    \break
+    \$ bettercap -T \texttt{IP\char`_MAQUINA\char`_CLIENTE} --proxy -P POST
+  \end{enumerate}
+
+  \paragraph{}
+  Agora a máquina cliente
+  \paragraph{}
+
+  \begin{enumerate}
+    \item Na máquina cliente digite o IP da máquina servidor seguido de dois
+    pontos com o numero da porta na area de URL do browser para accessar o web
+    site.
+    \item No campo de "username" digite "brbrbr" e no campo "password" digite
+    "123456"
+    \item Voçê será levado para uma página de profile que teoricamente não
+    poderia ser acessada por terceiros sem nome de usuário e a senha (entretanto
+    nesse servidor não foi inplementado cookie/tokien ou algo de segurança para
+    impedir terceiros de acessarem a pagina pois esse não é o foco do experimento
+    o foco é a captura dos dados pelo atacante)
+    \item Olhe o terminal que esta rodando o bettercap na máquina do atacante,
+    você verá em alguma parte os dados de "username" e "password" em texto limpo,
+    ou seja, os dados foram interceptados e robados sem o cliente perceber.
+  \end{enumerate}
 
   \newpage
 
   \section{Conclusão}
   \subsection{Como se defender do "Man in the middle" sobre o SSL ?}
+  \paragraph{}
+  Claramente a maneira de se defender de forma eficiente é informando os
+  clientes que se não ouver um sinbolo de cadeado ao lado da URL então ele
+  não deve continuar digitar na pagina dados sensiveis pois a conexão não é
+  segura.
+  \paragraph{}
+  Entretanto com uma procura na internet em sites e forums da area de segurança
+  da informação podemos encontrar como permitir o uma conexão mais segura por
+  parte do servidor. Segundo usuários do "Stack Exchange" usar certificados
+  auto-assinados é uma clara vulnerabilidade, logo use um certificado assinado
+  por instituições sérias.
+  \paragraph{}
+  Entretanto a forma mais importante citada pelo
+  pessoal do "Wikipedia" e de forums foi o uso de "HSTS" que no inglês significa
+  "HTTP Strict Transport Security", essa é uma forma de indicar ao servidor
+  que a conexão deve ser sempre feita atravez do uso de "HTTPS", ou seja, se o
+  atacante tentar passar a conexão do cliente de "HTTPS" para "HTTP" para assim
+  ter acesso as informações o browser vai negar a conexão por ela não estar
+  segura.
+  \paragraph{}
+  Configurar "HSTS" depende do servidor que está sendo utilizado, abaixo está
+  um link que possui como fazer em servidores "Apache" e "NGINX":
+
+  \url{http://bit.ly/2kNbxX4}
+
   \subsection{Considerações finais}
+  \paragraph{}
+  Manter a segurança em servidores é díficil e o SSL é um poderoso aliado,
+  entretanto apenas ligar o SSL não garante que o servidor está invoneravel,
+  existe uma série de maneiras de roubar dados de um servidor mesmo com o uso
+  de SSL, por isso além de SSL ativa o HSTS é de extrema importância para
+  impedir ataques como o "Man in the middle".
 
 \end{document}
